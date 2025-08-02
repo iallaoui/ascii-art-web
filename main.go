@@ -25,6 +25,7 @@ func main() {
 		fmt.Println("Invalid arguments")
 		return
 	}
+	http.Handle("/templates/", http.StripPrefix("/templates/", http.FileServer(http.Dir("templates"))))
 
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
