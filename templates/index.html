@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ascii-Art-Web</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Ascii-Art-Web</h1>
+
+  <form action="/ascii-art" method="post">
+    <label for="banner">Choose a Banner:</label>
+    <select name="banner" id="banner">
+
+      <option value="standard" {{if eq .Banner "standard"}}selected{{end}}>Standard</option>
+      <option value="shadow" {{if eq .Banner "shadow"}}selected{{end}}>Shadow</option>
+      <option value="thinkertoy" {{if eq .Banner "thinkertoy"}}selected{{end}}>Thinkertoy</option>
+
+    </select>
+
+    <br /><br />
+
+    <label for="inputText">Enter Text:</label>
+    <textarea maxlength="900" id="inputText" name="inputText" placeholder="Your text here" rows="5"
+      style="resize: vertical;"></textarea>
+
+    <br /><br />
+
+    <button type="submit">Generate ASCII Art</button>
+  </form>
+
+  {{if .ART}}
+  <pre>{{.ART}}</pre>
+  {{end}}
+
+</body>
+
+</html>
